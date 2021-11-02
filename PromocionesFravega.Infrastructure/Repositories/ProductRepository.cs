@@ -1,12 +1,12 @@
-﻿using PromocionesFravega.API.Data.Interfaces;
-using PromocionesFravega.API.Entities;
-using PromocionesFravega.API.Repositories.Interfaces;
+﻿using PromocionesFravega.Infrastructure.Data.Interfaces;
+using PromocionesFravega.Core.Entities;
+using PromocionesFravega.Infrastructure.Repositories.Interfaces;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace PromocionesFravega.API.Repositories
+namespace PromocionesFravega.Infrastructure.Repositories
 {
     public class ProductRepository : IProductRepository
     {

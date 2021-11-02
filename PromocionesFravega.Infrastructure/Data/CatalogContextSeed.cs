@@ -1,9 +1,9 @@
-﻿using PromocionesFravega.API.Entities;
+﻿using PromocionesFravega.Core.Entities;
 using MongoDB.Driver;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PromocionesFravega.API.Data
+namespace PromocionesFravega.Infrastructure.Data
 {
     public class CatalogContextSeed
     {

@@ -6,8 +6,8 @@ namespace PromocionesFravega.Core.Interfaces
 {
     public interface IUnitOfWork:IDisposable
     {
-        IStockRepository StockRepository { get; }
-        void SaveChanges();
-        Task SaveChangesAsync();
+        //IStockRepository StockRepository { get; }
+        //void SaveChanges();
+        //Task SaveChangesAsync();
     }
 }

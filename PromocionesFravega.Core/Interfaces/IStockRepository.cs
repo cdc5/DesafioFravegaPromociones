@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace PromocionesFravega.Core.Interfaces
 {
-    public interface IStockRepository : IRepository<Stock>
-    {
-        Task<IEnumerable<StockPorProducto>> GetStockPorProductoSP(string deposito, string ProductID);
-    }
+    //public interface IStockRepository : IRepository<Stock>
+    //{
+    //    Task<IEnumerable<StockPorProducto>> GetStockPorProductoSP(string deposito, string ProductID);
+    //}
 }

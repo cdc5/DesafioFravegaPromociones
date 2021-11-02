@@ -6,10 +6,10 @@ namespace PromocionesFravega.Infrastructure.Mappings
 {
     public class AutoMapperProfile:Profile
     {
-        public AutoMapperProfile()
-        {
-            CreateMap<Stock, StockDto>();
-            CreateMap<StockPorProducto, StockPorProductoDto>();
-        }
+        //public AutoMapperProfile()
+        //{
+        //    CreateMap<Stock, StockDto>();
+        //    CreateMap<StockPorProducto, StockPorProductoDto>();
+        //}
     }
 }

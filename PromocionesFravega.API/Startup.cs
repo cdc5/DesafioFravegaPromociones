@@ -1,7 +1,7 @@
-using PromocionesFravega.API.Data;
-using PromocionesFravega.API.Data.Interfaces;
-using PromocionesFravega.API.Repositories;
-using PromocionesFravega.API.Repositories.Interfaces;
+using PromocionesFravega.Infrastructure.Data;
+using PromocionesFravega.Infrastructure.Data.Interfaces;
+using PromocionesFravega.Infrastructure.Repositories;
+using PromocionesFravega.Infrastructure.Repositories.Interfaces;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;

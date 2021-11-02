@@ -1,10 +1,10 @@
-﻿using PromocionesFravega.API.Entities;
+﻿using PromocionesFravega.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PromocionesFravega.API.Repositories.Interfaces
+namespace PromocionesFravega.Infrastructure.Repositories.Interfaces
 {
     public interface IProductRepository
     {

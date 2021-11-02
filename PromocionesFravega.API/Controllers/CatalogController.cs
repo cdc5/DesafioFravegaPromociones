@@ -1,5 +1,5 @@
-﻿using PromocionesFravega.API.Entities;
-using PromocionesFravega.API.Repositories.Interfaces;
+﻿using PromocionesFravega.Core.Entities;
+using PromocionesFravega.Infrastructure.Repositories.Interfaces;
 using DnsClient.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;

@@ -1,7 +1,7 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace PromocionesFravega.API.Entities
+namespace PromocionesFravega.Core.Entities
 {
     public class Product
     {

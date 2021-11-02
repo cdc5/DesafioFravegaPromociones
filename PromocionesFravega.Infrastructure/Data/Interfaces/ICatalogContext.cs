@@ -1,7 +1,7 @@
-﻿using PromocionesFravega.API.Entities;
+﻿using PromocionesFravega.Core.Entities;
 using MongoDB.Driver;
 
-namespace PromocionesFravega.API.Data.Interfaces
+namespace PromocionesFravega.Infrastructure.Data.Interfaces
 {
     public interface ICatalogContext
     {

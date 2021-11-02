@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PromocionesFravega.UnitTests", "PromocionesFravega.UnitTests\PromocionesFravega.UnitTests.csproj", "{4EB3F416-C61B-4551-90FE-8D4E69B4D0DE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PromocionesFravega.API", "PromocionesFravega.API\PromocionesFravega.API.csproj", "{CDEE4DEB-C38B-4D59-BD1C-4595A41AC342}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{9A733F6B-AAF2-4C34-9FE2-400339E7EA5E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{80CAFD4A-366E-4BC8-B765-55625A6C67CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4EB3F416-C61B-4551-90FE-8D4E69B4D0DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EB3F416-C61B-4551-90FE-8D4E69B4D0DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EB3F416-C61B-4551-90FE-8D4E69B4D0DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EB3F416-C61B-4551-90FE-8D4E69B4D0DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDEE4DEB-C38B-4D59-BD1C-4595A41AC342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDEE4DEB-C38B-4D59-BD1C-4595A41AC342}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDEE4DEB-C38B-4D59-BD1C-4595A41AC342}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDEE4DEB-C38B-4D59-BD1C-4595A41AC342}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A733F6B-AAF2-4C34-9FE2-400339E7EA5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A733F6B-AAF2-4C34-9FE2-400339E7EA5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A733F6B-AAF2-4C34-9FE2-400339E7EA5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A733F6B-AAF2-4C34-9FE2-400339E7EA5E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4EB3F416-C61B-4551-90FE-8D4E69B4D0DE} = {80CAFD4A-366E-4BC8-B765-55625A6C67CA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {88FFFC32-4AC5-49E1-B00B-EC5AA024BE5E}
+	EndGlobalSection
+EndGlobal

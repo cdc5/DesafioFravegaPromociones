@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  promocionesdb:
+    container_name: promocionesdb
+    restart: always
+    ports:
+        - "27017:27017"
+    volumes:
+        - mongo_data:/data/db
+
+  promocionesfravega.api:
+    container_name: promocionesfravega.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings:ConnectionString=mongodb://promocionesdb:27017"      
+    depends_on:
+      - promocionesdb
+    ports:
+      - "8000:80"

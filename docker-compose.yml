@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  promocionesdb:
+    image: mongo
+
+  promocionesfravega.api:
+    image: ${DOCKER_REGISTRY-}promocionesfravegaapi
+    build:
+      context: .
+      dockerfile: PromocionesFravega.API/Dockerfile
+
+volumes:
+  mongo_data: 

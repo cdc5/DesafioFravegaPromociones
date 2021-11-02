@@ -15,4 +15,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.0.7" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PromocionesFravega.Core\PromocionesFravega.Core.csproj" />
+    <ProjectReference Include="..\PromocionesFravega.Infrastructure\PromocionesFravega.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

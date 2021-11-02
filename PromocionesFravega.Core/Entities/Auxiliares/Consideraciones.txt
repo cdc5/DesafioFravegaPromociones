@@ -1,0 +1,5 @@
+﻿BD
+- Se utilizarán claves reales para los depósitos, ya que se estima que nunca cambian y tienen un tamaño pequeño-
+- SE considera que no se busca item por depósito en La API de ML, sino que solo se busca por código de item idependientemente de en que depósito se halle.
+- Definir si utilizar claves numéricas o no para los datos maestros (surrogate keys) por un tema de performance, o usar naturals keys en nvarchar
+-SE entiende que la cantidad es entera

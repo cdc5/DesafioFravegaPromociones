@@ -9,8 +9,8 @@ namespace PromocionesFravega.Core.Entities
     public class Promocion
     {
         [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; private set; }
+        [BsonRepresentation(BsonType.String)]
+        public Guid Id { get; private set; }
         public IEnumerable<string> MediosDePago { get; private set; }
         public IEnumerable<string> Bancos { get; private set; }
         public IEnumerable<string> CategoriasProductos { get; private set; }
@@ -23,7 +23,7 @@ namespace PromocionesFravega.Core.Entities
         public DateTime FechaCreacion { get; private set; }
         public DateTime? FechaModificacion { get; private set; }
 
-        public Promocion(string _Id, IEnumerable<string> _MediosDePago, IEnumerable<string> _Bancos, IEnumerable<string> _CategoriasProductos,
+        public Promocion(Guid _Id, IEnumerable<string> _MediosDePago, IEnumerable<string> _Bancos, IEnumerable<string> _CategoriasProductos,
                         int? _MaximaCantidadDeCuotas, decimal? _ValorInteresCuotas, decimal? _PorcentajeDeDescuento, DateTime? _FechaInicio,
                         DateTime? _FechaFin, bool _Activo, DateTime _FechaCreacion, DateTime? _FechaModificacion)
         {
@@ -39,6 +39,11 @@ namespace PromocionesFravega.Core.Entities
             Activo = _Activo;
             FechaCreacion = _FechaCreacion;
             FechaModificacion = FechaModificacion;
+        }
+
+        public Promocion()
+        {
+            
         }
 
         public void SetActivo(bool _activo)

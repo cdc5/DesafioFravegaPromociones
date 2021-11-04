@@ -19,6 +19,7 @@ namespace PromocionesFravega.Core.Entities
         }
         private static void AgregarMediosDePago()
         {
+            MediosDePago = new List<string>();
             MediosDePago.Add("TARJETA_CREDITO");
             MediosDePago.Add("TARJETA_DEBITO");
             MediosDePago.Add("EFECTIVO");
@@ -35,6 +36,7 @@ namespace PromocionesFravega.Core.Entities
 
         private static void AgregarBancos()
         {
+            Bancos = new List<string>();
             Bancos.Add("Galicia");
             Bancos.Add("Santander Rio");
             Bancos.Add("Ciudad");
@@ -54,6 +56,7 @@ namespace PromocionesFravega.Core.Entities
 
         private static void AgregarCategoriasProductos()
         {
+            CategoriasProductos = new List<string>();
             CategoriasProductos.Add("Hogar");
             CategoriasProductos.Add("Jardin");
             CategoriasProductos.Add("ElectroCocina");

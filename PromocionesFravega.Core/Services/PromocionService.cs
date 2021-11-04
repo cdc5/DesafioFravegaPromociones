@@ -11,7 +11,7 @@ using PromocionesFravega.Core.Exceptions;
 
 namespace PromocionesFravega.Core.Services
 {
-    public class PromocionService
+    public class PromocionService: IPromocionService
     {
         private readonly IPromocionRepository _repository;
         private readonly IMapper _Mapper;
@@ -28,7 +28,7 @@ namespace PromocionesFravega.Core.Services
             return promociones;
         }
 
-        public async Task<Promocion> GetPromocion(string id)
+        public async Task<Promocion> GetPromocion(Guid id)
         {
             var promocion = await _repository.GetPromocion(id);
             return promocion;
@@ -49,6 +49,7 @@ namespace PromocionesFravega.Core.Services
 
         public async Task<IEnumerable<PromocionVigenteDto>> GetPromocionesVigentes(string medioDePago,string Banco,string categoriaProducto)
         {
+            ValidarInput(medioDePago, Banco, categoriaProducto);
             List<PromocionVigenteDto> promocionesDto = new List<PromocionVigenteDto>();
             PromocionVigenteDto promoDto;
             var hoy = DateTime.Now.Date;
@@ -68,8 +69,9 @@ namespace PromocionesFravega.Core.Services
             return promocionesDto;
         }
 
-        public async Task<string> CrearPromocion(PromocionDto promocion)
+        public async Task<Guid> CrearPromocion(PromocionDto promocion)
         {
+            ValidarInputListas(promocion.MediosDePago, promocion.Bancos, promocion.CategoriasProductos);
             ValidarSolapamientoPromos(promocion.MediosDePago, promocion.Bancos, promocion.CategoriasProductos,
                                         promocion.FechaInicio.Value, promocion.FechaFin.Value);
             var promo = _Mapper.Map<Promocion>(promocion);
@@ -80,8 +82,9 @@ namespace PromocionesFravega.Core.Services
             return promo.Id;
         }
 
-        public async Task<string> ActualizarPromocion(PromocionUpdateDto promocion)
+        public async Task<Guid> ActualizarPromocion(PromocionUpdateDto promocion)
         {
+            ValidarInputListas(promocion.MediosDePago, promocion.Bancos, promocion.CategoriasProductos);
             ValidarSolapamientoPromos(promocion.MediosDePago, promocion.Bancos, promocion.CategoriasProductos,
                                         promocion.FechaInicio.Value, promocion.FechaFin.Value);
             var promo = _Mapper.Map<Promocion>(promocion);
@@ -90,40 +93,23 @@ namespace PromocionesFravega.Core.Services
             return promo.Id;
         }
 
-        public async Task<string> ActualizarPromocion(PromocionVigenciaUpdateDto promocionUpdDto)
+        public async Task<Guid> ActualizarPromocion(PromocionVigenciaUpdateDto promocionUpdDto)
         {
             var promocion = await _repository.GetPromocion(promocionUpdDto.Id);
             if (promocion == null)
                 throw new BusinessException(String.Format("No se ha encontrado la promoción:{0}", promocionUpdDto.Id));
             
-            ValidarSolapamientoPromos(promocion.MediosDePago, promocion.Bancos, promocion.CategoriasProductos,
-                                      promocionUpdDto.FechaInicio.Value, promocionUpdDto.FechaFin.Value);
-
-            var promo = _Mapper.Map<Promocion>(promocion);
-            promo.SetFechaModificacion(DateTime.Now);
-            await _repository.ActualizarPromocion(promo);
-            return promo.Id;
+            if (ValidarSolapamientoPromos(promocion.MediosDePago, promocion.Bancos, promocion.CategoriasProductos,
+                                      promocionUpdDto.FechaInicio.Value, promocionUpdDto.FechaFin.Value))
+            {
+                var promo = _Mapper.Map<Promocion>(promocion);
+                promo.SetFechaModificacion(DateTime.Now);
+                await _repository.ActualizarPromocion(promo);
+                return promo.Id;
+            }
+            return default(Guid);
         }
-
-        private async void ValidarSolapamientoPromos(IEnumerable<string> MediosDePago, IEnumerable<string> Bancos, IEnumerable<string> Categorias, DateTime FechaInicio,DateTime FechaFin)
-        {
-            IEnumerable<Promocion> promos = await _repository.GetPromocionesMediosDePago(MediosDePago, FechaInicio, FechaFin);
-
-            if (promos != null && promos.Count() > 0)
-                throw new BusinessException("Ya existe una promoción para las fechas y los medios de pagos seleccionados");
-
-            promos = await _repository.GetPromocionesBancos(Bancos, FechaInicio, FechaFin);
-
-            if (promos != null && promos.Count() > 0)
-                throw new BusinessException("Ya existe una promoción para las fechas y los bancos seleccionados");
-
-            promos = await _repository.GetPromocionesCategorias(Bancos, FechaInicio, FechaFin);
-
-            if (promos != null && promos.Count() > 0)
-                throw new BusinessException("Ya existe una promoción para las fechas y las categorias de productos seleccionados");            
-        }
-
-        public async Task<string> EliminarPromocion(string id)
+        public async Task<Guid> EliminarPromocion(Guid id)
         {
             var promocion = await _repository.GetPromocion(id);
             if (promocion == null)
@@ -136,8 +122,79 @@ namespace PromocionesFravega.Core.Services
             return promo.Id;
         }
 
+        private bool ValidarSolapamientoPromos(IEnumerable<string> MediosDePago, IEnumerable<string> Bancos, IEnumerable<string> Categorias, DateTime FechaInicio,DateTime FechaFin)
+        {
+            IEnumerable<Promocion> promos = _repository.GetPromocionesMediosDePago(MediosDePago, FechaInicio, FechaFin).Result;
 
+            if (promos != null && promos.Count() > 0)
+            {
+                throw new BusinessException("Ya existe una promoción para las fechas y los medios de pagos seleccionados");                
+            }
 
+            promos = _repository.GetPromocionesBancos(Bancos, FechaInicio, FechaFin).Result;
+
+            if (promos != null && promos.Count() > 0)
+            {
+                throw new BusinessException("Ya existe una promoción para las fechas y los bancos seleccionados");
+            }
+
+            promos = _repository.GetPromocionesCategorias(Categorias, FechaInicio, FechaFin).Result;
+
+            if (promos != null && promos.Count() > 0)
+            {
+                throw new BusinessException("Ya existe una promoción para las fechas y las categorias de productos seleccionados");
+            }
+            return true;
+        }
+
+        
+
+        private void ValidarMediosDePago(IEnumerable<string> MediosDePago)
+        {
+            foreach (var m in MediosDePago)
+                Parametros.ExisteMedioDePago(m);
+        }
+
+        private void ValidarMedioDePago(string MedioDePago)
+        {
+            Parametros.ExisteMedioDePago(MedioDePago);
+        }
+
+        private void ValidarBancos(IEnumerable<string> Bancos)
+        {
+            foreach (var b in Bancos)
+                Parametros.ExisteBanco(b);
+        }
+
+        private void ValidarBanco(string Banco)
+        {
+            Parametros.ExisteBanco(Banco);
+        }
+
+        private void ValidarCategoriasProductos(IEnumerable<string> CategoriasProductos)
+        {
+            foreach (var c in CategoriasProductos)
+                Parametros.ExisteCategoriaProducto(c);
+        }
+
+        private void ValidarCategoriaProducto(string CategoriaProducto)
+        {
+            Parametros.ExisteCategoriaProducto(CategoriaProducto);
+        }
+
+        private void ValidarInputListas(IEnumerable<string> MediosDePago, IEnumerable<string> Bancos, IEnumerable<string> CategoriasProductos)
+        {
+            ValidarMediosDePago(MediosDePago);
+            ValidarBancos(Bancos);
+            ValidarCategoriasProductos(CategoriasProductos);
+        }
+
+        private void ValidarInput(string MediosDePago,string Bancos,string CategoriasProductos)
+        {
+            ValidarMedioDePago(MediosDePago);
+            ValidarBanco(Bancos);
+            ValidarCategoriaProducto(CategoriasProductos);
+        }
 
 
     }

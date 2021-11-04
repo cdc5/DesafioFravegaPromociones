@@ -27,7 +27,7 @@ namespace PromocionesFravega.Infrastructure.Repositories
                             .ToListAsync();
         }
 
-        public async Task<Promocion> GetPromocion(string id)
+        public async Task<Promocion> GetPromocion(Guid id)
         {
             return await _context
                            .Promociones
@@ -46,12 +46,18 @@ namespace PromocionesFravega.Infrastructure.Repositories
 
         public async Task<IEnumerable<Promocion>> GetPromocionesMediosDePago(IEnumerable<string> mediosDePago, DateTime FechaNuevaInicio,DateTime FechaNuevaFin)
         {
-            FilterDefinition<Promocion> MedioDePagofilter = Builders<Promocion>.Filter.ElemMatch(o => o.MediosDePago, d => mediosDePago.Contains(d));
             FilterDefinition<Promocion> Fechafilter = Builders<Promocion>.Filter.Where(x=> ((x.FechaInicio >= FechaNuevaInicio && x.FechaInicio<= FechaNuevaFin)
                                                                                   ||  (x.FechaFin >= FechaNuevaInicio && x.FechaFin <= FechaNuevaFin)));
             FilterDefinition<Promocion> Activofilter = Builders<Promocion>.Filter.Where(x => x.Activo == true);
 
-            var filter = MedioDePagofilter & Fechafilter & Activofilter;
+            FilterDefinition<Promocion> filter = Fechafilter & Activofilter; 
+
+            if (mediosDePago.Count() > 0)
+            {
+                FilterDefinition<Promocion> MedioDePagofilter = Builders<Promocion>.Filter.ElemMatch(o => o.MediosDePago, d => mediosDePago.Contains(d));
+                filter = filter & MedioDePagofilter;
+            }
+            
             return await _context.Promociones.Find(filter).ToListAsync();
         }
 
@@ -132,7 +138,7 @@ namespace PromocionesFravega.Infrastructure.Repositories
         }
 
        
-        public async Task<bool> EliminarPromocion(string id)
+        public async Task<bool> EliminarPromocion(Guid id)
         {
             FilterDefinition<Promocion> filter = Builders<Promocion>.Filter.Eq(p => p.Id, id);
 

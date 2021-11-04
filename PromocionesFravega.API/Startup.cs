@@ -17,6 +17,7 @@ using FluentValidation.AspNetCore;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Serializers;
+using PromocionesFravega.Core.Services;
 
 namespace PromocionesFravega.API
 {
@@ -42,6 +43,7 @@ namespace PromocionesFravega.API
 
             services.AddScoped<IPromocionContext, PromocionContext>();
             services.AddScoped<IPromocionRepository, PromocionRepository>();
+            services.AddScoped<IPromocionService, PromocionService>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

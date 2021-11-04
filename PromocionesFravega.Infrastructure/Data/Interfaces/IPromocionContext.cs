@@ -3,8 +3,8 @@ using MongoDB.Driver;
 
 namespace PromocionesFravega.Infrastructure.Data.Interfaces
 {
-    public interface ICatalogContext
+    public interface IPromocionContext
     {
-        IMongoCollection<Product> Products { get; }
+        IMongoCollection<Promocion> Promociones { get; }
     }
 }

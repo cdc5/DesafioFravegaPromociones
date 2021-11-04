@@ -1,7 +1,6 @@
 using PromocionesFravega.Infrastructure.Data;
 using PromocionesFravega.Infrastructure.Data.Interfaces;
 using PromocionesFravega.Infrastructure.Repositories;
-using PromocionesFravega.Infrastructure.Repositories.Interfaces;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -11,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using PromocionesFravega.Core.Interfaces;
 
 namespace PromocionesFravega.API
 {
@@ -26,8 +26,8 @@ namespace PromocionesFravega.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ICatalogContext, CatalogContext>();
-            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IPromocionContext, PromocionContext>();
+            services.AddScoped<IPromocionRepository, PromocionRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

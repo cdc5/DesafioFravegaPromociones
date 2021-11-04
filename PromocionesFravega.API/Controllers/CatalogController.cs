@@ -1,5 +1,4 @@
 ﻿using PromocionesFravega.Core.Entities;
-using PromocionesFravega.Infrastructure.Repositories.Interfaces;
 using DnsClient.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -7,91 +6,90 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
+using PromocionesFravega.Core.Interfaces;
 
 namespace PromocionesFravega.API.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class CatalogController : ControllerBase
+    public class PromocionController : ControllerBase
     {
-        private readonly IProductRepository _repository;
-        private readonly ILogger<CatalogController> _logger;
+        private readonly IPromocionRepository _repository;
 
-        public CatalogController(IProductRepository repository, ILogger<CatalogController> logger)
+        public PromocionController(IPromocionRepository repository)
         {
-            _repository = repository ?? throw new ArgumentNullException(nameof(repository));
-            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
+            _repository = repository ?? throw new ArgumentNullException(nameof(repository));            
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
+        [ProducesResponseType(typeof(IEnumerable<Promocion>), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<IEnumerable<Promocion>>> GetProducts()
         {
-            var products = await _repository.GetProducts();
+            var products = await _repository.GetPromociones();
             return Ok(products);
         }
 
-        [HttpGet("{id:length(24)}", Name = "GetProduct")]
+        [HttpGet("{id:length(24)}", Name = "GetPromocion")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<Product>> GetProductById(string id)
+        [ProducesResponseType(typeof(Promocion), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<Promocion>> GetPromocionById(Guid id)
         {
-            var product = await _repository.GetProduct(id);
+            var product = await _repository.GetPromocion(id);
 
             if (product == null)
             {
-                _logger.LogError($"Product with id: {id}, not found.");
+                //_logger.LogError($"Product with id: {id}, not found.");
                 return NotFound();
             }
 
             return Ok(product);
         }
 
-        [Route("[action]/{category}", Name = "GetProductByCategory")]
-        [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProductByCategory(string category)
-        {
-            var products = await _repository.GetProductByCategory(category);
-            return Ok(products);
-        }
+        //[Route("[action]/{category}", Name = "GetProductByCategory")]
+        //[HttpGet]
+        //[ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
+        //public async Task<ActionResult<IEnumerable<Product>>> GetProductByCategory(string category)
+        //{
+        //    var products = await _repository.GetProductByCategory(category);
+        //    return Ok(products);
+        //}
 
-        [Route("[action]/{name}", Name = "GetProductByName")]
-        [HttpGet]
-        [ProducesResponseType((int)HttpStatusCode.NotFound)]
-        [ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProductByName(string name)
-        {
-            var items = await _repository.GetProductByName(name);
-            if (items == null)
-            {
-                _logger.LogError($"Products with name: {name} not found.");
-                return NotFound();
-            }
-            return Ok(items);
-        }
+        //[Route("[action]/{name}", Name = "GetProductByName")]
+        //[HttpGet]
+        //[ProducesResponseType((int)HttpStatusCode.NotFound)]
+        //[ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
+        //public async Task<ActionResult<IEnumerable<Product>>> GetProductByName(string name)
+        //{
+        //    var items = await _repository.GetProductByName(name);
+        //    if (items == null)
+        //    {
+        //        _logger.LogError($"Products with name: {name} not found.");
+        //        return NotFound();
+        //    }
+        //    return Ok(items);
+        //}
 
         [HttpPost]
-        [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<Product>> CreateProduct([FromBody] Product product)
+        [ProducesResponseType(typeof(Promocion), (int)HttpStatusCode.OK)]
+        public async Task<ActionResult<Promocion>> InsertarPromocion([FromBody] Promocion promocion)
         {
-            await _repository.CreateProduct(product);
+            await _repository.InsertarPromocion(promocion);
 
-            return CreatedAtRoute("GetProduct", new { id = product.Id }, product);
+            return CreatedAtRoute("GetPromocion", new { id = promocion.Id }, promocion);
         }
 
         [HttpPut]
         [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> UpdateProduct([FromBody] Product product)
+        public async Task<IActionResult> ActualizarPromocion([FromBody] Promocion promocion)
         {
-            return Ok(await _repository.UpdateProduct(product));
+            return Ok(await _repository.ActualizarPromocion(promocion));
         }
 
-        [HttpDelete("{id:length(24)}", Name = "DeleteProduct")]        
-        [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> DeleteProductById(string id)
+        [HttpDelete("{id:length(24)}", Name = "EliminarPromocion")]        
+        [ProducesResponseType(typeof(Promocion), (int)HttpStatusCode.OK)]
+        public async Task<IActionResult> EliminarPromocionById(Guid id)
         {
-            return Ok(await _repository.DeleteProduct(id));
+            return Ok(await _repository.EliminarPromocion(id));
         }
     }
 }

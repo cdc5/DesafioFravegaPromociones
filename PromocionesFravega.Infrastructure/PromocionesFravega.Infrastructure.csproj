@@ -20,8 +20,4 @@
     <ProjectReference Include="..\PromocionesFravega.Core\PromocionesFravega.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Validators\" />
-  </ItemGroup>
-
 </Project>

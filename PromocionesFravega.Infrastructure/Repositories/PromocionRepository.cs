@@ -27,7 +27,7 @@ namespace PromocionesFravega.Infrastructure.Repositories
                             .ToListAsync();
         }
 
-        public async Task<Promocion> GetPromocion(Guid id)
+        public async Task<Promocion> GetPromocion(string id)
         {
             return await _context
                            .Promociones
@@ -44,33 +44,36 @@ namespace PromocionesFravega.Infrastructure.Repositories
                             .ToListAsync();
         }
 
-        public async Task<IEnumerable<Promocion>> GetPromocionesMediosDePago(IEnumerable<string> mediosDePago, DateTime FechaInicio,DateTime FechaFin)
+        public async Task<IEnumerable<Promocion>> GetPromocionesMediosDePago(IEnumerable<string> mediosDePago, DateTime FechaNuevaInicio,DateTime FechaNuevaFin)
         {
             FilterDefinition<Promocion> MedioDePagofilter = Builders<Promocion>.Filter.ElemMatch(o => o.MediosDePago, d => mediosDePago.Contains(d));
-            FilterDefinition<Promocion> FechaIniciofilter = Builders<Promocion>.Filter.Gte(p => p.FechaInicio, FechaInicio);
-            FilterDefinition<Promocion> FechaFinfilter = Builders<Promocion>.Filter.Lte(p => p.FechaFin, FechaFin);
+            FilterDefinition<Promocion> Fechafilter = Builders<Promocion>.Filter.Where(x=> ((x.FechaInicio >= FechaNuevaInicio && x.FechaInicio<= FechaNuevaFin)
+                                                                                  ||  (x.FechaFin >= FechaNuevaInicio && x.FechaFin <= FechaNuevaFin)));
+            FilterDefinition<Promocion> Activofilter = Builders<Promocion>.Filter.Where(x => x.Activo == true);
 
-            var filter = MedioDePagofilter & FechaIniciofilter & FechaFinfilter;
+            var filter = MedioDePagofilter & Fechafilter & Activofilter;
             return await _context.Promociones.Find(filter).ToListAsync();
         }
 
-        public async Task<IEnumerable<Promocion>> GetPromocionesBancos(IEnumerable<string> Bancos, DateTime FechaInicio, DateTime FechaFin)
+        public async Task<IEnumerable<Promocion>> GetPromocionesBancos(IEnumerable<string> Bancos, DateTime FechaNuevaInicio, DateTime FechaNuevaFin)
         {
             FilterDefinition<Promocion> Bancofilter = Builders<Promocion>.Filter.ElemMatch(o => o.Bancos, d => Bancos.Contains(d));
-            FilterDefinition<Promocion> FechaIniciofilter = Builders<Promocion>.Filter.Gte(p => p.FechaInicio, FechaInicio);
-            FilterDefinition<Promocion> FechaFinfilter = Builders<Promocion>.Filter.Lte(p => p.FechaFin, FechaFin);
+            FilterDefinition<Promocion> Fechafilter = Builders<Promocion>.Filter.Where(x => ((x.FechaInicio >= FechaNuevaInicio && x.FechaInicio <= FechaNuevaFin)
+                                                                                   || (x.FechaFin >= FechaNuevaInicio && x.FechaFin <= FechaNuevaFin)));
+            FilterDefinition<Promocion> Activofilter = Builders<Promocion>.Filter.Where(x => x.Activo == true);
 
-            var filter = Bancofilter & FechaIniciofilter & FechaFinfilter;
+            var filter = Bancofilter & Fechafilter & Activofilter;
             return await _context.Promociones.Find(filter).ToListAsync();
         }
 
-        public async Task<IEnumerable<Promocion>> GetPromocionesCategorias(IEnumerable<string> CategoriasProductos, DateTime FechaInicio, DateTime FechaFin)
+        public async Task<IEnumerable<Promocion>> GetPromocionesCategorias(IEnumerable<string> CategoriasProductos, DateTime FechaNuevaInicio, DateTime FechaNuevaFin)
         {
             FilterDefinition<Promocion> CategoriasFilter = Builders<Promocion>.Filter.ElemMatch(o => o.CategoriasProductos, d => CategoriasProductos.Contains(d));
-            FilterDefinition<Promocion> FechaIniciofilter = Builders<Promocion>.Filter.Gte(p => p.FechaInicio, FechaInicio);
-            FilterDefinition<Promocion> FechaFinfilter = Builders<Promocion>.Filter.Lte(p => p.FechaFin, FechaFin);
+            FilterDefinition<Promocion> Fechafilter = Builders<Promocion>.Filter.Where(x => ((x.FechaInicio >= FechaNuevaInicio && x.FechaInicio <= FechaNuevaFin)
+                                                                                  || (x.FechaFin >= FechaNuevaInicio && x.FechaFin <= FechaNuevaFin)));
+            FilterDefinition<Promocion> Activofilter = Builders<Promocion>.Filter.Where(x => x.Activo == true);
 
-            var filter = CategoriasFilter & FechaIniciofilter & FechaFinfilter;
+            var filter = CategoriasFilter & Fechafilter & Activofilter;
             return await _context.Promociones.Find(filter).ToListAsync();
         }
 
@@ -85,9 +88,10 @@ namespace PromocionesFravega.Infrastructure.Repositories
             FilterDefinition<Promocion> Bancofilter = Builders<Promocion>.Filter.ElemMatch(o => o.Bancos, d => listaBanco.Contains(d));
             FilterDefinition<Promocion> CategoriasFilter = Builders<Promocion>.Filter.ElemMatch(o => o.CategoriasProductos, d => listaCategorias.Contains(d));
             FilterDefinition<Promocion> FechaIniciofilter = Builders<Promocion>.Filter.Gte(p => p.FechaInicio, DateTime.Now.Date);
-            FilterDefinition<Promocion> FechaFinfilter = Builders<Promocion>.Filter.Lte(p => p.FechaFin, DateTime.Now.Date);     
+            FilterDefinition<Promocion> FechaFinfilter = Builders<Promocion>.Filter.Lte(p => p.FechaFin, DateTime.Now.Date);
+            FilterDefinition<Promocion> Activofilter = Builders<Promocion>.Filter.Where(x => x.Activo == true);
 
-            var filter = MedioDePagofilter & Bancofilter & CategoriasFilter & FechaIniciofilter & FechaFinfilter;
+            var filter = MedioDePagofilter & Bancofilter & CategoriasFilter & FechaIniciofilter & FechaFinfilter & Activofilter;
             return await _context.Promociones.Find(filter).ToListAsync();
         }
 
@@ -128,7 +132,7 @@ namespace PromocionesFravega.Infrastructure.Repositories
         }
 
        
-        public async Task<bool> EliminarPromocion(Guid id)
+        public async Task<bool> EliminarPromocion(string id)
         {
             FilterDefinition<Promocion> filter = Builders<Promocion>.Filter.Eq(p => p.Id, id);
 

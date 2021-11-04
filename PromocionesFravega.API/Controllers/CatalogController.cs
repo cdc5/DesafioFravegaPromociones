@@ -32,7 +32,7 @@ namespace PromocionesFravega.API.Controllers
         [HttpGet("{id:length(24)}", Name = "GetPromocion")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(Promocion), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<Promocion>> GetPromocionById(Guid id)
+        public async Task<ActionResult<Promocion>> GetPromocionById(string id)
         {
             var product = await _repository.GetPromocion(id);
 
@@ -87,7 +87,7 @@ namespace PromocionesFravega.API.Controllers
 
         [HttpDelete("{id:length(24)}", Name = "EliminarPromocion")]        
         [ProducesResponseType(typeof(Promocion), (int)HttpStatusCode.OK)]
-        public async Task<IActionResult> EliminarPromocionById(Guid id)
+        public async Task<IActionResult> EliminarPromocionById(string id)
         {
             return Ok(await _repository.EliminarPromocion(id));
         }

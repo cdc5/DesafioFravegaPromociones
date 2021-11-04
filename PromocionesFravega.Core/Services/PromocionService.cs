@@ -28,7 +28,7 @@ namespace PromocionesFravega.Core.Services
             return promociones;
         }
 
-        public async Task<Promocion> GetPromocion(Guid id)
+        public async Task<Promocion> GetPromocion(string id)
         {
             var promocion = await _repository.GetPromocion(id);
             return promocion;
@@ -43,7 +43,7 @@ namespace PromocionesFravega.Core.Services
 
         public async Task<IEnumerable<Promocion>> GetPromocionesVigentes(DateTime Fecha)
         {
-            var promociones = await _repository.GetPromociones(x => x.FechaInicio <= Fecha && x.FechaFin >= Fecha);
+            var promociones = await _repository.GetPromociones(x => x.FechaInicio <= Fecha && x.FechaFin >= Fecha && x.Activo == true);
             return promociones;
         }
 
@@ -68,18 +68,19 @@ namespace PromocionesFravega.Core.Services
             return promocionesDto;
         }
 
-        public async Task<Guid> CrearPromocion(PromocionDto promocion)
+        public async Task<string> CrearPromocion(PromocionDto promocion)
         {
             ValidarSolapamientoPromos(promocion.MediosDePago, promocion.Bancos, promocion.CategoriasProductos,
                                         promocion.FechaInicio.Value, promocion.FechaFin.Value);
             var promo = _Mapper.Map<Promocion>(promocion);
             promo.SetActivo(true);
-            promo.SetFechaCreacion(DateTime.Now);
+            promo.SetFechaCreacion(DateTime.Now);            
+
             await _repository.InsertarPromocion(promo);
             return promo.Id;
         }
 
-        public async Task<Guid> ActualizarPromocion(PromocionUpdateDto promocion)
+        public async Task<string> ActualizarPromocion(PromocionUpdateDto promocion)
         {
             ValidarSolapamientoPromos(promocion.MediosDePago, promocion.Bancos, promocion.CategoriasProductos,
                                         promocion.FechaInicio.Value, promocion.FechaFin.Value);
@@ -89,7 +90,7 @@ namespace PromocionesFravega.Core.Services
             return promo.Id;
         }
 
-        public async Task<Guid> ActualizarPromocion(PromocionVigenciaUpdateDto promocionUpdDto)
+        public async Task<string> ActualizarPromocion(PromocionVigenciaUpdateDto promocionUpdDto)
         {
             var promocion = await _repository.GetPromocion(promocionUpdDto.Id);
             if (promocion == null)
@@ -122,7 +123,7 @@ namespace PromocionesFravega.Core.Services
                 throw new BusinessException("Ya existe una promoción para las fechas y las categorias de productos seleccionados");            
         }
 
-        public async Task<Guid> EliminarPromocion(Guid id)
+        public async Task<string> EliminarPromocion(string id)
         {
             var promocion = await _repository.GetPromocion(id);
             if (promocion == null)

@@ -11,6 +11,12 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using PromocionesFravega.Core.Interfaces;
+using System;
+using PromocionesFravega.Infrastructure.Filters;
+using FluentValidation.AspNetCore;
+using MongoDB.Bson.Serialization;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Serializers;
 
 namespace PromocionesFravega.API
 {
@@ -26,6 +32,14 @@ namespace PromocionesFravega.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            services.AddControllers(options => { options.Filters.Add<GlobalExceptionFilter>(); }).AddNewtonsoftJson(
+                options =>
+                {
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                });
+
             services.AddScoped<IPromocionContext, PromocionContext>();
             services.AddScoped<IPromocionRepository, PromocionRepository>();
 
@@ -34,6 +48,14 @@ namespace PromocionesFravega.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Fravega.API", Version = "v1" });
             });
+
+            services.AddMvc().AddFluentValidation(options =>
+            {
+                options.RegisterValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
+            });
+
+            //BsonSerializer.RegisterSerializer(new GuidSerializer(GuidRepresentation.Standard));
+            //BsonDefaults.GuidRepresentationMode = GuidRepresentationMode.V3;
 
             services.AddHealthChecks()
                     .AddMongoDb(Configuration["DatabaseSettings:ConnectionString"], "MongoDb Health", HealthStatus.Degraded);

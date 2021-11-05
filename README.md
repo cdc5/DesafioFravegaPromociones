@@ -31,6 +31,7 @@ Una vez finalizado el proceso de docker ambos contendores se encontrarán aptos 
 
 La base de datos cuenta con un Documento de promociones, correspondiente a la clase brindada para el desfío: "Promocion".
 
+´´´
 public class Promocion
     {
         [BsonId]
@@ -47,7 +48,8 @@ public class Promocion
         public bool Activo { get; private set; }
         public DateTime FechaCreacion { get; private set; }
         public DateTime? FechaModificacion { get; private set; }
-I
+}
+´´´
 ## API
 
 EL proyecto resuelve el problema planteado exponiendo un endpoints REST para cada punto de la consigna:

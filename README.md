@@ -9,7 +9,7 @@ El proyecto esta estructurado en una arquitectura de capas "Clean Architecture".
 En la que el **Core del negocio (PromocionesFravega.Core)** se encuentra en el centro de la aplicación, en la misma se modelan las entidades necesarias, en este caso solo utilizamos una clase "Promocion" que contiene toda la información para dar solucion a la problemática. La misma capa se comparte con los servicios debido al reducido tamaño de la aplicación por lo que no se consideró necesario realizar un proyecto aparte para los mismos.
 
 Alrededor del Core implementamos las capas:
-  - **infraestructura (PromocionesFravega.Infrastructure)**: Se encarga de la conexión a la base de datos MongoDB.
+  - **Infraestructura (PromocionesFravega.Infrastructure)**: Se encarga de la conexión a la base de datos MongoDB.
   - **API (PromocionesFravega.Api)**: Es el contacto con el mundo exterior y la capa contra la cual impactan las solicitudes REST y devuelve los recursos solicitados. Es la capa donde se alojan los controladores.
   - **Testing (PromocionesFravega.UnitTests)**: Se encarga de las pruebas unitarias del proyecto.
 

@@ -1,6 +1,5 @@
-# DesafioFravegaPromociones
-## Challenge Fravega por consultor Sooft Technology
-API de promociones realizado por Christian Damián Cristofano
+# Desafio Fravega - API promociones 
+## Challenge Fravega para consultora Sooft Technology realizado por Christian Damián Cristofano
 
 Se realiza el desafio propuesto "Promociones" utilizando tecnología .Net 5 (.Net Core > 3.1) en C# con base de datos MonogDB y la utilizacion de contenedores Docker.
 El proyecto esta estructurado en una arquitectura de capas "Clean Architecture".

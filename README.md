@@ -22,7 +22,7 @@ Alrededor del Core implementamos las capas:
     1: Contendor MongoDB en puerto:27017
     
     2: Aplicación .Net Core en puerto:8000
-    
+
 Una vez finalizado el proceso de docker ambos contendores se encontrarán aptos para ser utilizados.
 
 * También se puede ejecutar el proyecto desde visual studio desde los comandos ejecutar o depurar, pero se debe tener en cuenta que el contendor de mongoDB debe estar en ejecución para que la aplicación pueda acceder a la Base de Datos.
@@ -30,13 +30,17 @@ Una vez finalizado el proceso de docker ambos contendores se encontrarán aptos 
 ## Estructura Base de Datos
 
 La base de datos cuenta con un Documento de promociones, correspondiente a la clase brindada para el desfío: "Promocion".
+
 public class Promocion
     {
         [BsonId]
         [BsonRepresentation(BsonType.String)]
         public Guid Id { get; private set; }
+        
         public IEnumerable<string> MediosDePago { get; private set; }
+        
         public IEnumerable<string> Bancos { get; private set; }
+        
         public IEnumerable<string> CategoriasProductos { get; private set; }
         public int? MaximaCantidadDeCuotas { get; private set; }
         public decimal? ValorInteresCuotas { get; private set; }
@@ -63,10 +67,10 @@ EL proyecto resuelve el problema planteado exponiendo un endpoints REST para cad
 
 Se adjunta colección de Postman con todos los llamados a los endpoints creados en "PromocionesFravega.Infrastructure\Postman\Desafio.postman_collection.json"
 También al ejecutar la aplicación, se despliega la página principal de swagger con la documentación correspondiente a la Api, 
-por lo que los llamados también pueden ser vistos desde la url: 
+por lo que los llamados también pueden ser vistos desde la url: http://localhost:8000/swagger/index.html
 
 ## Testing
-El proyecto PromocionesFravega.UnitTests es el encargado de llevar a cabo las pruebas unitarias,  utilizó la libreria xUnit, para simplificar el proceso de testing. 
+El proyecto PromocionesFravega.UnitTests es el encargado de llevar a cabo las pruebas unitarias, se utilizó la libreria xUnit, para simplificar el proceso de testing. 
 La clase **PromocionControllerTest** es donde se encuentran todas las pruebas unitarias realizadas y se encarga de testear a la clase **PromocionController**. Se creó la clase mock PromocionRepositoryMock para simular el comportamiento del accesso a la BD.
 
 ![imagen](https://user-images.githubusercontent.com/15236085/140513286-e7e107e6-9c92-4241-bf9e-34d819ae5c62.png)

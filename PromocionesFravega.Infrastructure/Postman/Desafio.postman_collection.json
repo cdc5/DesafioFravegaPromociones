@@ -1,0 +1,260 @@
+{
+	"info": {
+		"_postman_id": "1fc81c7d-b11c-4f46-bdef-55da6c328381",
+		"name": "Fravega - Promociones - Desafio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetPromociones",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:49589/api/v1/Promocion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "49589",
+					"path": [
+						"api",
+						"v1",
+						"Promocion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CrearPromocion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"mediosdepago\":[\"TARJETA_DEBITO\"],\r\n    \"bancos\":[\"Nacion\"],\r\n    \"categoriasProductos\":[\"ElectroCocina\",\"Colchones\"],\r\n    \"maximaCantidadDeCuotas\":1,\r\n    \"valorInteresCuotas\":1,\r\n    \"porcentajeDeDescuento\":null,\r\n    \"fechaInicio\":\"2021-11-01\",\r\n    \"fechaFin\":\"2022-03-15\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:49589/api/v1/Promocion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "49589",
+					"path": [
+						"api",
+						"v1",
+						"Promocion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPromocion",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:49589/api/v1/Promocion/GetPromocion?id=971459f6-cfb1-4e1e-b67f-6cf2ddbe2979",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "49589",
+					"path": [
+						"api",
+						"v1",
+						"Promocion",
+						"GetPromocion"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "971459f6-cfb1-4e1e-b67f-6cf2ddbe2979"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPromocionesVigentes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:49589/api/v1/Promocion/GetPromocionesVigentes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "49589",
+					"path": [
+						"api",
+						"v1",
+						"Promocion",
+						"GetPromocionesVigentes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPromocionesVigentesPorFecha",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:49589/api/v1/Promocion/GetPromocionesVigentesPorFecha?Fecha=2021-11-01",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "49589",
+					"path": [
+						"api",
+						"v1",
+						"Promocion",
+						"GetPromocionesVigentesPorFecha"
+					],
+					"query": [
+						{
+							"key": "Fecha",
+							"value": "2021-11-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPromocionesVigentesPorVenta",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"MedioDePago\":\"EFECTIVO\",\r\n    \"Banco\":\"BBVA\",\r\n    \"CategoriaProducto\":\"as\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:49589/api/v1/Promocion/GetPromocionesVigentesPorVenta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "49589",
+					"path": [
+						"api",
+						"v1",
+						"Promocion",
+						"GetPromocionesVigentesPorVenta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarPromocion",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Id\":\"f171183f-632f-4324-9354-b8d202651f62\",\r\n    \"mediosdepago\":[\"TARJETA_DEBITO\"],\r\n    \"bancos\":[\"Nacion\"],\r\n    \"categoriasProductos\":[\"ElectroCocina\",\"Colchones\"],\r\n    \"maximaCantidadDeCuotas\":10,\r\n    \"valorInteresCuotas\":0,\r\n    \"porcentajeDeDescuento\":null,\r\n    \"fechaInicio\":\"2025-11-01\",\r\n    \"fechaFin\":\"2025-11-15\",\r\n    \"Activo\":true   \r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:49589/api/v1/Promocion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "49589",
+					"path": [
+						"api",
+						"v1",
+						"Promocion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarPromocionVigencia",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Id\":\"f171183f-632f-4324-9354-b8d202651f62\",\r\n    \"fechaInicio\":\"2024-11-01\",\r\n    \"fechaFin\":\"2024-10-15\"    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:49589/api/v1/Promocion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "49589",
+					"path": [
+						"api",
+						"v1",
+						"Promocion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarPromocion",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:49589/api/v1/Promocion/EliminarPromocion?id=971459f6-cfb1-4e1e-b67f-6cf2ddbe2979",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "49589",
+					"path": [
+						"api",
+						"v1",
+						"Promocion",
+						"EliminarPromocion"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "971459f6-cfb1-4e1e-b67f-6cf2ddbe2979"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -20,8 +20,8 @@ Alrededor del Core implementamos las capas:
 * Mediante la utilización de docker, se pueden generar los contenedores para la ejecución del proyecto:
   - Ejecutar el comando: "docker-compose up -d" dentro del directorío \src del proyecto y docker se encargará de generar dos contenedores:
     
-    1: Contendor MongoDB en puerto:27017
-    2: Aplicación .Net Core en puerto:8000
+    1. Contendor MongoDB en puerto:27017
+    2. Aplicación .Net Core en puerto:8000
 
 Una vez finalizado el proceso de docker ambos contendores se encontrarán aptos para ser utilizados.
 

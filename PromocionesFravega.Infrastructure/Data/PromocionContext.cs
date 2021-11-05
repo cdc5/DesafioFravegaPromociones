@@ -15,7 +15,7 @@ namespace PromocionesFravega.Infrastructure.Data
             var database = client.GetDatabase(configuration.GetValue<string>("DatabaseSettings:DatabaseName"));
 
             Promociones = database.GetCollection<Promocion>(configuration.GetValue<string>("DatabaseSettings:CollectionName"));
-            PromocionContextSeed.SeedData(Promociones);
+            //PromocionContextSeed.SeedData(Promociones);
         }        
     }
 }

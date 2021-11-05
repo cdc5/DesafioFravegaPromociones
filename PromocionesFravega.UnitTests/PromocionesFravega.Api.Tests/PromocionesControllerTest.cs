@@ -161,21 +161,49 @@ namespace PromocionesFravega.UnitTests.PromocionesFravega.Api.Tests
             Assert.Equal(6,promos.Count());
         }
 
-
         [Fact]
-        public async Task Get_AlInvocar_IntentaCrearPromocion_ValidacionSuperposicionParaFecha()
+        public async Task Get_AlInvocar_IntentaCrearPromocion_ValidacionSuperposicionMedioDePago()
         {
             PromocionDto promo = new PromocionDto();
             promo.MediosDePago = new List<string> { "GIFT_CARD" };
-            promo.Bancos = new List<string> { "Macro" };
-            promo.CategoriasProductos = new List<string> { "Audio", "Tecnologia" };
-            promo.FechaInicio = DateTime.Parse("05/11/2021");
-            promo.FechaFin = DateTime.Parse("31/01/2022");
+            promo.Bancos = new List<string> { "Galicia" };
+            promo.CategoriasProductos = new List<string> { "Jardin" };
+            promo.FechaInicio = DateTime.Parse("15/11/2021");
+            promo.FechaFin = DateTime.Parse("30/11/2021");
             promo.MaximaCantidadDeCuotas = 12;
             promo.ValorInteresCuotas = 1;
 
             await Assert.ThrowsAsync<BusinessException>(() => _controller.InsertarPromocion(promo));
-           
+        }
+
+        [Fact]
+        public async Task Get_AlInvocar_IntentaCrearPromocion_ValidacionSuperposicionBanco()
+        {
+            PromocionDto promo = new PromocionDto();
+            promo.MediosDePago = new List<string> { "EFECTIVO" };
+            promo.Bancos = new List<string> { "Macro" };
+            promo.CategoriasProductos = new List<string> { "Jardin" };
+            promo.FechaInicio = DateTime.Parse("15/11/2021");
+            promo.FechaFin = DateTime.Parse("30/11/2021");
+            promo.MaximaCantidadDeCuotas = 12;
+            promo.ValorInteresCuotas = 1;
+
+            await Assert.ThrowsAsync<BusinessException>(() => _controller.InsertarPromocion(promo));
+        }
+
+        [Fact]
+        public async Task Get_AlInvocar_IntentaCrearPromocion_ValidacionSuperposicionCategoriaProducto()
+        {
+            PromocionDto promo = new PromocionDto();
+            promo.MediosDePago = new List<string> { "EFECTIVO" };
+            promo.Bancos = new List<string> { "Galicia" };
+            promo.CategoriasProductos = new List<string> { "Celulares" };
+            promo.FechaInicio = DateTime.Parse("15/11/2021");
+            promo.FechaFin = DateTime.Parse("30/11/2021");
+            promo.MaximaCantidadDeCuotas = 12;
+            promo.ValorInteresCuotas = 1;
+
+            await Assert.ThrowsAsync<BusinessException>(() => _controller.InsertarPromocion(promo));
         }
 
 

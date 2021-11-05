@@ -86,8 +86,7 @@ namespace PromocionesFravega.UnitTests
         public async Task<IEnumerable<Promocion>> GetPromocionesMediosDePago(IEnumerable<string> mediosDePago, DateTime FechaNuevaInicio, DateTime FechaNuevaFin)
         {
             List<Promocion> lista = new List<Promocion>();
-            var promo = await GetPromociones(x => ((x.FechaInicio >= FechaNuevaInicio && x.FechaInicio <= FechaNuevaFin)
-                                                || (x.FechaFin >= FechaNuevaInicio && x.FechaFin <= FechaNuevaFin))
+            var promo = await GetPromociones(x => ((FechaNuevaInicio >= x.FechaInicio && FechaNuevaInicio <= x.FechaFin ))                                                
                                                 && x.Activo == true);
 
             var promos =  promo.Where(p => p.MediosDePago.Any(x => mediosDePago.Contains(x)));
@@ -97,8 +96,7 @@ namespace PromocionesFravega.UnitTests
         public async Task<IEnumerable<Promocion>> GetPromocionesBancos(IEnumerable<string> Bancos, DateTime FechaNuevaInicio, DateTime FechaNuevaFin)
         {
             List<Promocion> lista = new List<Promocion>();
-            var promo = await GetPromociones(x => ((x.FechaInicio >= FechaNuevaInicio && x.FechaInicio <= FechaNuevaFin)
-                                                || (x.FechaFin >= FechaNuevaInicio && x.FechaFin <= FechaNuevaFin))
+            var promo = await GetPromociones(x => ((FechaNuevaInicio >= x.FechaInicio && FechaNuevaInicio <= x.FechaFin))
                                                 && x.Activo == true);
 
             var promos = promo.Where(p => p.Bancos.Any(x => Bancos.Contains(x)));
@@ -108,8 +106,7 @@ namespace PromocionesFravega.UnitTests
         public async Task<IEnumerable<Promocion>> GetPromocionesCategorias(IEnumerable<string> CategoriasProductos, DateTime FechaNuevaInicio, DateTime FechaNuevaFin)
         {
             List<Promocion> lista = new List<Promocion>();
-            var promo = await GetPromociones(x => ((x.FechaInicio >= FechaNuevaInicio && x.FechaInicio <= FechaNuevaFin)
-                                                || (x.FechaFin >= FechaNuevaInicio && x.FechaFin <= FechaNuevaFin))
+            var promo = await GetPromociones(x => ((FechaNuevaInicio >= x.FechaInicio && FechaNuevaInicio <= x.FechaFin))
                                                 && x.Activo == true);
 
             var promos = promo.Where(p => p.CategoriasProductos.Any(x => CategoriasProductos.Contains(x)));

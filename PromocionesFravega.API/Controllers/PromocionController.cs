@@ -99,7 +99,7 @@ namespace PromocionesFravega.API.Controllers
             return Ok(res);
         }
 
-        [HttpDelete("{id:length(24)}", Name = "EliminarPromocion")]        
+        [HttpDelete("EliminarPromocion")]        
         [ProducesResponseType(typeof(Promocion), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> EliminarPromocionById(Guid id)
         {

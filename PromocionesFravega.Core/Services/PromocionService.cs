@@ -115,17 +115,17 @@ namespace PromocionesFravega.Core.Services
             if (promocion == null)
                 throw new BusinessException(String.Format("No se ha encontrado la promoción:{0}", id));
 
-            var promo = _Mapper.Map<Promocion>(promocion);
-            promo.SetActivo(false);
-            promo.SetFechaModificacion(DateTime.Now);
-            await _repository.ActualizarPromocion(promo);
-            return promo.Id;
+
+            promocion.SetActivo(false);
+            promocion.SetFechaModificacion(DateTime.Now);
+            await _repository.ActualizarPromocion(promocion);
+            return promocion.Id;
         }
 
         private bool ValidarSolapamientoPromos(IEnumerable<string> MediosDePago, IEnumerable<string> Bancos, IEnumerable<string> Categorias, DateTime FechaInicio,DateTime FechaFin)
         {
             IEnumerable<Promocion> promos = _repository.GetPromocionesMediosDePago(MediosDePago, FechaInicio, FechaFin).Result;
-
+            
             if (promos != null && promos.Count() > 0)
             {
                 throw new BusinessException("Ya existe una promoción para las fechas y los medios de pagos seleccionados");                

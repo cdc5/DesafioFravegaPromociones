@@ -2,8 +2,8 @@
 ## Challenge Fravega por consultor Sooft Technology
 API de promociones realizado por Christian Damián Cristofano
 
-Se realiza el desafio propuesto "Promociones" utilizando tecnología .Net Core 5 en C# con base de datos MonogDB y la utilizacion de contenedores Docker.
-El proyecto esta estructurado en una arquitectura de capas similar a "Clean Architecture".
+Se realiza el desafio propuesto "Promociones" utilizando tecnología .Net 5 (.Net Core > 3.1) en C# con base de datos MonogDB y la utilizacion de contenedores Docker.
+El proyecto esta estructurado en una arquitectura de capas "Clean Architecture".
 
 ![Arquitectura_Capas](https://user-images.githubusercontent.com/15236085/138007524-a5a868b1-ab3f-46ac-be01-6d81c191c8aa.jpg)
 
@@ -66,17 +66,19 @@ También al ejecutar la aplicación, se despliega la página principal de swagge
 por lo que los llamados también pueden ser vistos desde la url: 
 
 ## Testing
-El proyecto MLControlStock.UnitTests es el encargado de llevar a cabo las pruebas unitarias,  utilizó la libreria xUnit, para simplificar el proceso de testing. 
-La clase **StockControllerTest** es donde se encuentran todas las pruebas unitarias realizadas y se encarga de testear a la clase **StockController**. Se crearon clases mock para simular el comportamiento de las clases reales:
-- ApiClientMock: simula el llamado a la Api de ML para conseguir los productos existentes en depósito:
-- StockRepositoryMock y UnitOfWorkMock: simulan el comportamiento del accesso a la BD.
+El proyecto PromocionesFravega.UnitTests es el encargado de llevar a cabo las pruebas unitarias,  utilizó la libreria xUnit, para simplificar el proceso de testing. 
+La clase **PromocionControllerTest** es donde se encuentran todas las pruebas unitarias realizadas y se encarga de testear a la clase **PromocionController**. Se creó la clase mock PromocionRepositoryMock para simular el comportamiento del accesso a la BD.
 
-![imagen](https://user-images.githubusercontent.com/15236085/138016442-5f51601b-686a-4c12-b16a-09e18f17a9b4.png)
+![imagen](https://user-images.githubusercontent.com/15236085/140513286-e7e107e6-9c92-4241-bf9e-34d819ae5c62.png)
 
 ## Documentación con Swagger
  
 Al iniciar el proyecto, se abrirá en el explorador web la pagina de inicio (index.html) de Swagger brindando la documentación correspondiente a las solicitudes de los endpoints.
 
-![imagen](https://user-images.githubusercontent.com/15236085/138015636-09b262dc-400d-4afb-846d-cac0c70c7452.png)
+![imagen](https://user-images.githubusercontent.com/15236085/140513397-9987c37f-a35e-4ccf-96b7-b34992c81f24.png)
+![imagen](https://user-images.githubusercontent.com/15236085/140513460-b1e876b1-a3f8-496c-9ff3-6b7fc6bef956.png)
+![imagen](https://user-images.githubusercontent.com/15236085/140513539-d50d9585-da58-48be-b634-9a200fe7f6e9.png)
 
-![imagen](https://user-images.githubusercontent.com/15236085/138015708-e4fd0890-1f85-4552-a803-056434e32efa.png)
+
+
+

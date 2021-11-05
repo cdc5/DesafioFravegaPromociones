@@ -50,7 +50,7 @@ namespace PromocionesFravega.Infrastructure.Repositories
                                                                                   ||  (x.FechaFin >= FechaNuevaInicio && x.FechaFin <= FechaNuevaFin)));
             FilterDefinition<Promocion> Activofilter = Builders<Promocion>.Filter.Where(x => x.Activo == true);
 
-            FilterDefinition<Promocion> filter = Fechafilter & Activofilter; 
+            FilterDefinition<Promocion> filter = Fechafilter & Activofilter;
 
             if (mediosDePago.Count() > 0)
             {
@@ -63,27 +63,38 @@ namespace PromocionesFravega.Infrastructure.Repositories
 
         public async Task<IEnumerable<Promocion>> GetPromocionesBancos(IEnumerable<string> Bancos, DateTime FechaNuevaInicio, DateTime FechaNuevaFin)
         {
-            FilterDefinition<Promocion> Bancofilter = Builders<Promocion>.Filter.ElemMatch(o => o.Bancos, d => Bancos.Contains(d));
             FilterDefinition<Promocion> Fechafilter = Builders<Promocion>.Filter.Where(x => ((x.FechaInicio >= FechaNuevaInicio && x.FechaInicio <= FechaNuevaFin)
                                                                                    || (x.FechaFin >= FechaNuevaInicio && x.FechaFin <= FechaNuevaFin)));
             FilterDefinition<Promocion> Activofilter = Builders<Promocion>.Filter.Where(x => x.Activo == true);
 
-            var filter = Bancofilter & Fechafilter & Activofilter;
+            FilterDefinition<Promocion> filter = Fechafilter & Activofilter;
+
+            if (Bancos.Count() > 0)
+            {
+                FilterDefinition<Promocion> Bancofilter = Builders<Promocion>.Filter.ElemMatch(o => o.Bancos, d => Bancos.Contains(d));
+                filter = filter & Bancofilter;
+            }            
+            
             return await _context.Promociones.Find(filter).ToListAsync();
         }
 
         public async Task<IEnumerable<Promocion>> GetPromocionesCategorias(IEnumerable<string> CategoriasProductos, DateTime FechaNuevaInicio, DateTime FechaNuevaFin)
         {
-            FilterDefinition<Promocion> CategoriasFilter = Builders<Promocion>.Filter.ElemMatch(o => o.CategoriasProductos, d => CategoriasProductos.Contains(d));
             FilterDefinition<Promocion> Fechafilter = Builders<Promocion>.Filter.Where(x => ((x.FechaInicio >= FechaNuevaInicio && x.FechaInicio <= FechaNuevaFin)
-                                                                                  || (x.FechaFin >= FechaNuevaInicio && x.FechaFin <= FechaNuevaFin)));
+                                                                                 || (x.FechaFin >= FechaNuevaInicio && x.FechaFin <= FechaNuevaFin)));
             FilterDefinition<Promocion> Activofilter = Builders<Promocion>.Filter.Where(x => x.Activo == true);
 
-            var filter = CategoriasFilter & Fechafilter & Activofilter;
+            FilterDefinition<Promocion> filter = Fechafilter & Activofilter;
+
+            if (CategoriasProductos.Count() > 0)
+            {
+                FilterDefinition<Promocion> CategoriasFilter = Builders<Promocion>.Filter.ElemMatch(o => o.CategoriasProductos, d => CategoriasProductos.Contains(d));
+                filter = filter & CategoriasFilter;
+            }            
             return await _context.Promociones.Find(filter).ToListAsync();
         }
 
-        public async Task<IEnumerable<Promocion>> GetPromocionesVigentes(string medioDePago, string Banco, string categoriaProducto)
+        public async Task<IEnumerable<Promocion>> GetPromocionesVigentes(string medioDePago, string Banco, string categoriaProducto,DateTime fecha)
         {
             var listaMedio = new List<string> { medioDePago };
             var listaBanco = new List<string> { Banco };
@@ -93,8 +104,8 @@ namespace PromocionesFravega.Infrastructure.Repositories
             FilterDefinition<Promocion> MedioDePagofilter = Builders<Promocion>.Filter.ElemMatch(o=>o.MediosDePago, d=> listaMedio.Contains(d));
             FilterDefinition<Promocion> Bancofilter = Builders<Promocion>.Filter.ElemMatch(o => o.Bancos, d => listaBanco.Contains(d));
             FilterDefinition<Promocion> CategoriasFilter = Builders<Promocion>.Filter.ElemMatch(o => o.CategoriasProductos, d => listaCategorias.Contains(d));
-            FilterDefinition<Promocion> FechaIniciofilter = Builders<Promocion>.Filter.Gte(p => p.FechaInicio, DateTime.Now.Date);
-            FilterDefinition<Promocion> FechaFinfilter = Builders<Promocion>.Filter.Lte(p => p.FechaFin, DateTime.Now.Date);
+            FilterDefinition<Promocion> FechaIniciofilter = Builders<Promocion>.Filter.Gte(p => p.FechaInicio, fecha);
+            FilterDefinition<Promocion> FechaFinfilter = Builders<Promocion>.Filter.Lte(p => p.FechaFin, fecha);
             FilterDefinition<Promocion> Activofilter = Builders<Promocion>.Filter.Where(x => x.Activo == true);
 
             var filter = MedioDePagofilter & Bancofilter & CategoriasFilter & FechaIniciofilter & FechaFinfilter & Activofilter;

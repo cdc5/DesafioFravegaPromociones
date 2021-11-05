@@ -27,7 +27,7 @@ namespace PromocionesFravega.API.Controllers
 
         [HttpGet]
         [ProducesResponseType(typeof(IEnumerable<Promocion>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IEnumerable<Promocion>>> GetPromociones()
+        public async Task<ActionResult> GetPromociones()
         {
             var promos = await _promocionService.GetPromociones();
             var res = new ApiResponse<IEnumerable<Promocion>>(promos);
@@ -36,7 +36,7 @@ namespace PromocionesFravega.API.Controllers
 
         [HttpGet("GetPromocionesVigentes")]
         [ProducesResponseType(typeof(IEnumerable<Promocion>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IEnumerable<Promocion>>> GetPromocionesVigentes()
+        public async Task<ActionResult> GetPromocionesVigentes()
         {
             var promos = await _promocionService.GetPromocionesVigentes();
             var res = new ApiResponse<IEnumerable<Promocion>>(promos);
@@ -46,7 +46,7 @@ namespace PromocionesFravega.API.Controllers
         
         [HttpGet("GetPromocionesVigentesPorFecha")]
         [ProducesResponseType(typeof(IEnumerable<Promocion>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IEnumerable<Promocion>>> GetPromocionesVigentesPorFecha([FromQuery] DateTime Fecha)
+        public async Task<ActionResult> GetPromocionesVigentesPorFecha([FromQuery] DateTime Fecha)
         {
             var promos = await _promocionService.GetPromocionesVigentes(Fecha);
             var res = new ApiResponse<IEnumerable<Promocion>>(promos);
@@ -55,7 +55,7 @@ namespace PromocionesFravega.API.Controllers
 
         [HttpGet("GetPromocionesVigentesPorVenta")]
         [ProducesResponseType(typeof(IEnumerable<PromocionVigenteDto>), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<IEnumerable<PromocionVigenteDto>>> GetPromocionesVigentesPorVenta(PromocionesPorVentaQueryFilter filter)
+        public async Task<ActionResult> GetPromocionesVigentesPorVenta(PromocionesPorVentaQueryFilter filter)
         {
             var promos = await _promocionService.GetPromocionesVigentes(filter.MedioDePago,filter.MedioDePago,filter.CategoriaProducto);
             var res = new ApiResponse<IEnumerable<PromocionVigenteDto>>(promos);
@@ -65,36 +65,12 @@ namespace PromocionesFravega.API.Controllers
         [HttpGet("GetPromocion")]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(Promocion), (int)HttpStatusCode.OK)]
-        public async Task<ActionResult<Promocion>> GetPromocionById(Guid id)
+        public async Task<IActionResult> GetPromocionById(Guid id)
         {
             var promo = await _promocionService.GetPromocion(id);
             var res = new ApiResponse<Promocion>(promo);
             return Ok(res);
-        }
-
-        //[Route("[action]/{category}", Name = "GetProductByCategory")]
-        //[HttpGet]
-        //[ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
-        //public async Task<ActionResult<IEnumerable<Product>>> GetProductByCategory(string category)
-        //{
-        //    var products = await _repository.GetProductByCategory(category);
-        //    return Ok(products);
-        //}
-
-        //[Route("[action]/{name}", Name = "GetProductByName")]
-        //[HttpGet]
-        //[ProducesResponseType((int)HttpStatusCode.NotFound)]
-        //[ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
-        //public async Task<ActionResult<IEnumerable<Product>>> GetProductByName(string name)
-        //{
-        //    var items = await _repository.GetProductByName(name);
-        //    if (items == null)
-        //    {
-        //        _logger.LogError($"Products with name: {name} not found.");
-        //        return NotFound();
-        //    }
-        //    return Ok(items);
-        //}
+        }        
 
         [HttpPost]
         //[ProducesResponseType(typeof(Promocion), (int)HttpStatusCode.OK)]

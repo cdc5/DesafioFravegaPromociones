@@ -53,7 +53,7 @@ namespace PromocionesFravega.Core.Services
             List<PromocionVigenteDto> promocionesDto = new List<PromocionVigenteDto>();
             PromocionVigenteDto promoDto;
             var hoy = DateTime.Now.Date;
-            var promociones = await _repository.GetPromocionesVigentes(medioDePago, Banco, categoriaProducto);
+            var promociones = await _repository.GetPromocionesVigentes(medioDePago, Banco, categoriaProducto,hoy);
             foreach (var p in promociones)
             {
                 promoDto = new PromocionVigenteDto();

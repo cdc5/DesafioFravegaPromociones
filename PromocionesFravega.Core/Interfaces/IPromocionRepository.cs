@@ -11,10 +11,10 @@ namespace PromocionesFravega.Core.Interfaces
     {
         Task<IEnumerable<Promocion>> GetPromociones();
         Task<IEnumerable<Promocion>> GetPromociones(Expression<Func<Promocion, bool>> exp);
-        Task<IEnumerable<Promocion>> GetPromocionesVigentes(string medioDePago, string Banco, string categoriaProducto);
-        Task<IEnumerable<Promocion>> GetPromocionesMediosDePago(IEnumerable<string> mediosDePago, DateTime FechaInicio, DateTime FechaFin);
-        Task<IEnumerable<Promocion>> GetPromocionesBancos(IEnumerable<string> Bancos, DateTime FechaInicio, DateTime FechaFin);
-        Task<IEnumerable<Promocion>> GetPromocionesCategorias(IEnumerable<string> CategoriasProductos, DateTime FechaInicio, DateTime FechaFin);
+        Task<IEnumerable<Promocion>> GetPromocionesVigentes(string medioDePago, string Banco, string categoriaProducto, DateTime fecha);
+        Task<IEnumerable<Promocion>> GetPromocionesMediosDePago(IEnumerable<string> mediosDePago, DateTime FechaNuevaInicio, DateTime FechaNuevaFin);
+        Task<IEnumerable<Promocion>> GetPromocionesBancos(IEnumerable<string> Bancos, DateTime FechaNuevaInicio, DateTime FechaNuevaFin);
+        Task<IEnumerable<Promocion>> GetPromocionesCategorias(IEnumerable<string> CategoriasProductos, DateTime FechaNuevaInicio, DateTime FechaNuevaFin);
         Task<Promocion> GetPromocion(Guid id);      
 
         Task InsertarPromocion(Promocion promocion);

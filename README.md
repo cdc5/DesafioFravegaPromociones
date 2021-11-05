@@ -15,16 +15,17 @@ Alrededor del Core implementamos las capas:
 
 ## Instalación y uso:
 
-* El proyecto esta realizado en .Net Core 5 por lo que es necesaria la instalación del paquete de .Net Core correspondiente, como IDE se utilizó Visual Studio 2019 V16.11.5, para tener compatibilidad con el proyecto (debido a .Net 5) se debe tener una versión de Visual Studio superior o igual a la V16.8
+* El proyecto esta realizado en .Net 5 por lo que es necesaria la instalación del paquete de .Net correspondiente, como IDE se utilizó Visual Studio 2019 V16.11.5, para tener compatibilidad con el proyecto (debido a .Net 5) se debe tener una versión de Visual Studio superior o igual a la V16.8
 * En el proyecto se provee el archivo "PromocionesFravega.Infrastructure\Data\DB\promociones.json" , con datos de prueba en caso de ser necesario para su carga en MongoDB.
 * Mediante la utilización de docker, se pueden generar los contenedores para la ejecución del proyecto:
   - Ejecutar el comando: "docker-compose up -d" en el directorío raíz del proyecto y docker se encargará de generar dos contenedores:
     1: Contendor MongoDB en puerto:27017
+    
     2: Aplicación .Net Core en puerto:8000
     
 Una vez finalizado el proceso de docker ambos contendores se encontrarán aptos para ser utilizados.
 
-* También se puede ejecutar el proyecto desde visual studio desde los comandos ejecutar o depurar, pero se debe tener el contendor de mongoDB en ejecución para que la aplicación pueda acceder a la Base de Datos.
+* También se puede ejecutar el proyecto desde visual studio desde los comandos ejecutar o depurar, pero se debe tener en cuenta que el contendor de mongoDB debe estar en ejecución para que la aplicación pueda acceder a la Base de Datos.
 
 ## Estructura Base de Datos
 

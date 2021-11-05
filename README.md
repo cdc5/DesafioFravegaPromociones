@@ -36,11 +36,8 @@ public class Promocion
         [BsonId]
         [BsonRepresentation(BsonType.String)]
         public Guid Id { get; private set; }
-        
         public IEnumerable<string> MediosDePago { get; private set; }
-        
         public IEnumerable<string> Bancos { get; private set; }
-        
         public IEnumerable<string> CategoriasProductos { get; private set; }
         public int? MaximaCantidadDeCuotas { get; private set; }
         public decimal? ValorInteresCuotas { get; private set; }

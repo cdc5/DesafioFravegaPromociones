@@ -6,7 +6,7 @@ El proyecto esta estructurado en una arquitectura de capas "Clean Architecture".
 
 ![Arquitectura_Capas](https://user-images.githubusercontent.com/15236085/138007524-a5a868b1-ab3f-46ac-be01-6d81c191c8aa.jpg)
 
-En la que el **Core del negocio (PromocionesFravega.Core)** se encuentra en el centro de la aplicación, en la misma se modelan las entidades necesarias, en este caso solo utilizamos una clase "Promocion" que contiene toda la información para dar solucion a la problemática. La misma capa se comparte con los servicios debido al reducido tamaño de la aplicación por lo que no se consideró necesario realizar un proyecto aparte para los servicios.
+En la que el **Core del negocio (PromocionesFravega.Core)** se encuentra en el centro de la aplicación, en la misma se modelan las entidades necesarias, en este caso solo utilizamos una clase "Promocion" que contiene toda la información para dar solucion a la problemática. La misma capa se comparte con los servicios debido al reducido tamaño de la aplicación por lo que no se consideró necesario realizar un proyecto aparte para los mismos.
 
 Alrededor del Core implementamos las capas:
   - **infraestructura (PromocionesFravega.Infrastructure)**: Se encarga de la conexión a la base de datos MongoDB.

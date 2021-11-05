@@ -1,0 +1,398 @@
+[{
+  "_id": "219eaa64-25a4-41d5-9509-cd76d0138b42",
+  "MediosDePago": [
+    "GIFT_CARD"
+  ],
+  "Bancos": [
+    "Macro"
+  ],
+  "CategoriasProductos": [
+    "Tecnologia",
+    "Celulares",
+    "Colchones"
+  ],
+  "MaximaCantidadDeCuotas": 12,
+  "ValorInteresCuotas": null,
+  "PorcentajeDeDescuento": null,
+  "FechaInicio": {
+    "$date": "2021-06-01T03:00:00Z"
+  },
+  "FechaFin": {
+    "$date": "2021-06-30T03:00:00Z"
+  },
+  "Activo": true,
+  "FechaCreacion": {
+    "$date": "2021-11-04T19:40:09.782Z"
+  },
+  "FechaModificacion": null
+},{
+  "_id": "f171183f-632f-4324-9354-b8d202651f62",
+  "MediosDePago": [
+    "GIFT_CARD"
+  ],
+  "Bancos": [
+    "Macro"
+  ],
+  "CategoriasProductos": [
+    "Tecnologia",
+    "Celulares",
+    "Colchones"
+  ],
+  "MaximaCantidadDeCuotas": null,
+  "ValorInteresCuotas": null,
+  "PorcentajeDeDescuento": "20",
+  "FechaInicio": {
+    "$date": "2021-07-01T03:00:00Z"
+  },
+  "FechaFin": {
+    "$date": "2021-07-30T03:00:00Z"
+  },
+  "Activo": true,
+  "FechaCreacion": {
+    "$date": "2021-11-04T19:40:28.501Z"
+  },
+  "FechaModificacion": null
+},{
+  "_id": "4b46e3b6-89cc-42bc-bdd7-6fcae2f0af93",
+  "MediosDePago": [
+    "TARJETA_CREDITO"
+  ],
+  "Bancos": [
+    "Santander Rio"
+  ],
+  "CategoriasProductos": [
+    "Jardin"
+  ],
+  "MaximaCantidadDeCuotas": null,
+  "ValorInteresCuotas": null,
+  "PorcentajeDeDescuento": "20",
+  "FechaInicio": {
+    "$date": "2021-07-01T03:00:00Z"
+  },
+  "FechaFin": {
+    "$date": "2021-07-30T03:00:00Z"
+  },
+  "Activo": true,
+  "FechaCreacion": {
+    "$date": "2021-11-04T19:47:15.861Z"
+  },
+  "FechaModificacion": null
+},{
+  "_id": "f66ddfd1-dc16-4b8d-ab69-79dc0925231e",
+  "MediosDePago": [
+    "TARJETA_CREDITO"
+  ],
+  "Bancos": [
+    "ICBC"
+  ],
+  "CategoriasProductos": [
+    "Jardin",
+    "GrandesElectro"
+  ],
+  "MaximaCantidadDeCuotas": 1,
+  "ValorInteresCuotas": "1",
+  "PorcentajeDeDescuento": null,
+  "FechaInicio": {
+    "$date": "2021-09-01T03:00:00Z"
+  },
+  "FechaFin": {
+    "$date": "2021-09-30T03:00:00Z"
+  },
+  "Activo": true,
+  "FechaCreacion": {
+    "$date": "2021-11-04T19:57:51.658Z"
+  },
+  "FechaModificacion": null
+},{
+  "_id": "2c3269af-e89c-4c97-ab40-964e5f222b08",
+  "MediosDePago": [
+    "TARJETA_DEBITO"
+  ],
+  "Bancos": [
+    "Nacion"
+  ],
+  "CategoriasProductos": [
+    "Celulares",
+    "Audio"
+  ],
+  "MaximaCantidadDeCuotas": 1,
+  "ValorInteresCuotas": "1",
+  "PorcentajeDeDescuento": null,
+  "FechaInicio": {
+    "$date": "2021-09-25T03:00:00Z"
+  },
+  "FechaFin": {
+    "$date": "2021-09-30T03:00:00Z"
+  },
+  "Activo": true,
+  "FechaCreacion": {
+    "$date": "2021-11-04T19:58:32.698Z"
+  },
+  "FechaModificacion": null
+},{
+  "_id": "68feeda5-851f-44c8-aeb2-04bcf31ccfa6",
+  "MediosDePago": [
+    "GIFT_CARD"
+  ],
+  "Bancos": [
+    "Ciudad"
+  ],
+  "CategoriasProductos": [
+    "Celulares",
+    "Audio"
+  ],
+  "MaximaCantidadDeCuotas": 1,
+  "ValorInteresCuotas": "1",
+  "PorcentajeDeDescuento": null,
+  "FechaInicio": {
+    "$date": "2021-09-25T03:00:00Z"
+  },
+  "FechaFin": {
+    "$date": "2021-09-30T03:00:00Z"
+  },
+  "Activo": true,
+  "FechaCreacion": {
+    "$date": "2021-11-04T19:59:00.001Z"
+  },
+  "FechaModificacion": null
+},{
+  "_id": "90cc1784-73a2-43c5-9b9b-e03e9245581a",
+  "MediosDePago": [
+    "EFECTIVO"
+  ],
+  "Bancos": [
+    "BBVA"
+  ],
+  "CategoriasProductos": [
+    "Celulares",
+    "Audio"
+  ],
+  "MaximaCantidadDeCuotas": 1,
+  "ValorInteresCuotas": "1",
+  "PorcentajeDeDescuento": null,
+  "FechaInicio": {
+    "$date": "2021-11-01T03:00:00Z"
+  },
+  "FechaFin": {
+    "$date": "2021-11-15T03:00:00Z"
+  },
+  "Activo": true,
+  "FechaCreacion": {
+    "$date": "2021-11-04T20:00:02.352Z"
+  },
+  "FechaModificacion": null
+},{
+  "_id": "f4d8126f-71e5-40f9-8f26-67b1157cce1b",
+  "MediosDePago": [],
+  "Bancos": [],
+  "CategoriasProductos": [
+    "Celulares",
+    "Audio"
+  ],
+  "MaximaCantidadDeCuotas": 1,
+  "ValorInteresCuotas": "1",
+  "PorcentajeDeDescuento": null,
+  "FechaInicio": {
+    "$date": "2021-11-15T03:00:00Z"
+  },
+  "FechaFin": {
+    "$date": "2021-11-30T03:00:00Z"
+  },
+  "Activo": true,
+  "FechaCreacion": {
+    "$date": "2021-11-04T20:00:25.687Z"
+  },
+  "FechaModificacion": null
+},{
+  "_id": "25693d25-8a8e-4682-a61c-2dbf619a215e",
+  "MediosDePago": [],
+  "Bancos": [],
+  "CategoriasProductos": [
+    "Celulares",
+    "Audio"
+  ],
+  "MaximaCantidadDeCuotas": 1,
+  "ValorInteresCuotas": "1",
+  "PorcentajeDeDescuento": null,
+  "FechaInicio": {
+    "$date": "2021-11-15T03:00:00Z"
+  },
+  "FechaFin": {
+    "$date": "2021-11-30T03:00:00Z"
+  },
+  "Activo": true,
+  "FechaCreacion": {
+    "$date": "2021-11-04T20:04:49.700Z"
+  },
+  "FechaModificacion": null
+},{
+  "_id": "b5d38b75-1625-43e9-a11e-f424a1e3b83b",
+  "MediosDePago": [],
+  "Bancos": [],
+  "CategoriasProductos": [],
+  "MaximaCantidadDeCuotas": 1,
+  "ValorInteresCuotas": "1",
+  "PorcentajeDeDescuento": null,
+  "FechaInicio": {
+    "$date": "2021-11-15T03:00:00Z"
+  },
+  "FechaFin": {
+    "$date": "2021-11-30T03:00:00Z"
+  },
+  "Activo": true,
+  "FechaCreacion": {
+    "$date": "2021-11-04T20:06:56.790Z"
+  },
+  "FechaModificacion": null
+},{
+  "_id": "132f7008-debc-4e8a-934f-51c7452d5160",
+  "MediosDePago": [],
+  "Bancos": [],
+  "CategoriasProductos": [],
+  "MaximaCantidadDeCuotas": 1,
+  "ValorInteresCuotas": "1",
+  "PorcentajeDeDescuento": null,
+  "FechaInicio": {
+    "$date": "2021-11-15T03:00:00Z"
+  },
+  "FechaFin": {
+    "$date": "2021-11-30T03:00:00Z"
+  },
+  "Activo": true,
+  "FechaCreacion": {
+    "$date": "2021-11-04T20:06:58.850Z"
+  },
+  "FechaModificacion": null
+},{
+  "_id": "21259f46-165a-4a4e-a43e-41f7528e1f9f",
+  "MediosDePago": [
+    "GIFT_CARD"
+  ],
+  "Bancos": [],
+  "CategoriasProductos": [],
+  "MaximaCantidadDeCuotas": 1,
+  "ValorInteresCuotas": "1",
+  "PorcentajeDeDescuento": null,
+  "FechaInicio": {
+    "$date": "2021-11-15T03:00:00Z"
+  },
+  "FechaFin": {
+    "$date": "2021-11-30T03:00:00Z"
+  },
+  "Activo": true,
+  "FechaCreacion": {
+    "$date": "2021-11-04T20:14:50.520Z"
+  },
+  "FechaModificacion": null
+},{
+  "_id": "496dc643-d7f3-466c-84a5-c86347f315c4",
+  "MediosDePago": [],
+  "Bancos": [],
+  "CategoriasProductos": [],
+  "MaximaCantidadDeCuotas": 1,
+  "ValorInteresCuotas": "1",
+  "PorcentajeDeDescuento": null,
+  "FechaInicio": {
+    "$date": "2021-12-15T03:00:00Z"
+  },
+  "FechaFin": {
+    "$date": "2021-12-31T03:00:00Z"
+  },
+  "Activo": true,
+  "FechaCreacion": {
+    "$date": "2021-11-04T20:15:57.263Z"
+  },
+  "FechaModificacion": null
+},{
+  "_id": "90c190e5-12db-46dd-a528-baa0eed3bfd4",
+  "MediosDePago": [],
+  "Bancos": [],
+  "CategoriasProductos": [],
+  "MaximaCantidadDeCuotas": 1,
+  "ValorInteresCuotas": "1",
+  "PorcentajeDeDescuento": null,
+  "FechaInicio": {
+    "$date": "2023-12-01T03:00:00Z"
+  },
+  "FechaFin": {
+    "$date": "2023-12-31T03:00:00Z"
+  },
+  "Activo": true,
+  "FechaCreacion": {
+    "$date": "2021-11-05T04:29:39.139Z"
+  },
+  "FechaModificacion": null
+},{
+  "_id": "cbe065ea-3fb5-4408-812f-0957678f42eb",
+  "MediosDePago": [
+    "TARJETA_CREDITO"
+  ],
+  "Bancos": [],
+  "CategoriasProductos": [],
+  "MaximaCantidadDeCuotas": 1,
+  "ValorInteresCuotas": "1",
+  "PorcentajeDeDescuento": null,
+  "FechaInicio": {
+    "$date": "2022-02-01T03:00:00Z"
+  },
+  "FechaFin": {
+    "$date": "2022-02-28T03:00:00Z"
+  },
+  "Activo": true,
+  "FechaCreacion": {
+    "$date": "2021-11-05T04:30:35.625Z"
+  },
+  "FechaModificacion": null
+},{
+  "_id": "971459f6-cfb1-4e1e-b67f-6cf2ddbe2979",
+  "MediosDePago": [
+    "EFECTIVO"
+  ],
+  "Bancos": [
+    "Galicia"
+  ],
+  "CategoriasProductos": [
+    "Hogar",
+    "Jardin"
+  ],
+  "MaximaCantidadDeCuotas": 1,
+  "ValorInteresCuotas": "1",
+  "PorcentajeDeDescuento": null,
+  "FechaInicio": {
+    "$date": "2022-03-01T03:00:00Z"
+  },
+  "FechaFin": {
+    "$date": "2022-03-15T03:00:00Z"
+  },
+  "Activo": true,
+  "FechaCreacion": {
+    "$date": "2021-11-05T04:32:42.965Z"
+  },
+  "FechaModificacion": null
+},{
+  "_id": "37365a47-3aad-4791-a038-d48263eb1a87",
+  "MediosDePago": [
+    "TARJETA_DEBITO"
+  ],
+  "Bancos": [
+    "Nacion"
+  ],
+  "CategoriasProductos": [
+    "ElectroCocina",
+    "Colchones"
+  ],
+  "MaximaCantidadDeCuotas": 1,
+  "ValorInteresCuotas": "1",
+  "PorcentajeDeDescuento": null,
+  "FechaInicio": {
+    "$date": "2022-03-01T03:00:00Z"
+  },
+  "FechaFin": {
+    "$date": "2022-03-15T03:00:00Z"
+  },
+  "Activo": true,
+  "FechaCreacion": {
+    "$date": "2021-11-05T04:33:23.060Z"
+  },
+  "FechaModificacion": null
+}]

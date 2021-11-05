@@ -102,7 +102,7 @@ namespace PromocionesFravega.Core.Services
             if (ValidarSolapamientoPromos(promocion.MediosDePago, promocion.Bancos, promocion.CategoriasProductos,
                                       promocionUpdDto.FechaInicio.Value, promocionUpdDto.FechaFin.Value))
             {
-                var promo = _Mapper.Map<Promocion>(promocion);
+                var promo = _Mapper.Map<Promocion>(promocionUpdDto);
                 promo.SetFechaModificacion(DateTime.Now);
                 await _repository.ActualizarPromocion(promo);
                 return promo.Id;

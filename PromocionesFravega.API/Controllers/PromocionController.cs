@@ -57,7 +57,7 @@ namespace PromocionesFravega.API.Controllers
         [ProducesResponseType(typeof(IEnumerable<PromocionVigenteDto>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult> GetPromocionesVigentesPorVenta(PromocionesPorVentaQueryFilter filter)
         {
-            var promos = await _promocionService.GetPromocionesVigentes(filter.MedioDePago,filter.MedioDePago,filter.CategoriaProducto);
+            var promos = await _promocionService.GetPromocionesVigentes(filter.MedioDePago,filter.Banco,filter.CategoriaProducto);
             var res = new ApiResponse<IEnumerable<PromocionVigenteDto>>(promos);
             return Ok(res);
         }

@@ -11,8 +11,12 @@ namespace PromocionesFravega.Infrastructure.Mappings
             CreateMap<Promocion, PromocionDto>();
             CreateMap<PromocionDto, Promocion>();
             CreateMap<Promocion, PromocionUpdateDto>();
+            CreateMap<PromocionUpdateDto, Promocion>();
             CreateMap<Promocion, PromocionVigenteDto>();
-            //.ForMember(dest => dest.Bancos, opt => opt.MapFrom(so => so.TurnosRenspas.Select(t => t.RenspasId).ToList()))
+            CreateMap<PromocionVigenteDto, Promocion>();
+            CreateMap<Promocion, PromocionVigenciaUpdateDto>();
+            CreateMap<PromocionVigenciaUpdateDto, Promocion>();            
+            
         }
     }
 }

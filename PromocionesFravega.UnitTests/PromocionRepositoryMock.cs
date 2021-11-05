@@ -118,7 +118,7 @@ namespace PromocionesFravega.UnitTests
 
         public async Task<IEnumerable<Promocion>> GetPromocionesVigentes(string medioDePago, string Banco, string categoriaProducto,DateTime Fecha)
         {
-            var promo = await GetPromociones(x =>(x.FechaInicio >= DateTime.Now.Date && x.FechaFin <= Fecha) && x.Activo == true);
+            var promo = await GetPromociones(x =>(x.FechaInicio <= Fecha  && x.FechaFin >= Fecha) && x.Activo == true);
             var promos = promo.Where(p => p.MediosDePago.Contains(medioDePago));
             promos = promos.Where(p => p.Bancos.Contains(Banco));
             promos = promos.Where(p => p.CategoriasProductos.Contains(categoriaProducto));
@@ -127,7 +127,11 @@ namespace PromocionesFravega.UnitTests
 
         public Task InsertarPromocion(Promocion promocion)
         {
-            _promociones.Add(promocion);
+            var promo = new Promocion(new Guid(), promocion.MediosDePago, promocion.Bancos, promocion.CategoriasProductos,
+                                promocion.MaximaCantidadDeCuotas, promocion.ValorInteresCuotas, promocion.PorcentajeDeDescuento,
+                                promocion.FechaInicio, promocion.FechaFin, promocion.Activo, DateTime.Now, null);
+            
+            _promociones.Add(promo);            
             return CompletedTask;
         }
     }
